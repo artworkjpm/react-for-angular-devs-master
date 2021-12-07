@@ -1,9 +1,11 @@
 import React from 'react';
+import useGetData from '../hooks/useGetData';
 import { customerList } from '../interfaces/customerList';
 
-function MusicList(props: { data: [customerList] }) {
-  const { data } = props;
-  console.log(data);
+function CustomerListPage() {
+  const { data } = useGetData(
+    'https://my-json-server.typicode.com/artworkjpm/customer-db/db'
+  );
 
   return (
     <div>
@@ -27,9 +29,9 @@ function MusicList(props: { data: [customerList] }) {
         </thead>
         <tbody>
           {data &&
-            data.map((item: customerList) => {
+            data.map((item: customerList, index: number) => {
               return (
-                <tr className="border-b">
+                <tr className="border-b" key={index}>
                   <td className="border-r px-6 align-middle border-l-0 border-r-0  whitespace-nowrap p-4">
                     {item.first_name}
                   </td>
@@ -51,4 +53,4 @@ function MusicList(props: { data: [customerList] }) {
   );
 }
 
-export default MusicList;
+export default CustomerListPage;

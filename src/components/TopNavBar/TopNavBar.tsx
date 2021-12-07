@@ -17,7 +17,9 @@ function TopNavBar() {
 
           <ul className="flex items-center">
             <li>
-              <h2 className="pl-8 lg:pl-0 text-gray-700">John's Music List</h2>
+              <h2 className="pl-8 lg:pl-0 text-gray-700">
+                John's Customer List
+              </h2>
             </li>
           </ul>
 
