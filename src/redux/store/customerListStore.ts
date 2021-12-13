@@ -1,18 +1,13 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk';
-import { filtersReducer } from '../reducers/filtersReducer';
+import { configureStore } from '@reduxjs/toolkit';
 import { customerReducer } from '../reducers/customerReducer';
-import { composeWithDevTools } from 'redux-devtools-extension';
-
-const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware));
+import { filtersReducer } from '../reducers/filtersReducer';
 
 export const customerListStore = () => {
-  const store = createStore(
-    combineReducers({
+  const store = configureStore({
+    reducer: {
       customers: customerReducer,
       filters: filtersReducer
-    }),
-    composedEnhancer
-  );
+    }
+  });
   return store;
 };
